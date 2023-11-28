@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+/*
+ * 3 - Crie um programa em Java que peça ao usuário um valor 
+ * inteiro positivo e mostra na tela todos os seus divisores.
+ */
+public class Un2Exemplo3 {
+	private static Scanner sc = new Scanner (System.in);
+	public static void main(String[] args) {
+		int num;
+		
+		num = entrada();
+		divisores(num);
+	}
+	
+	// metodos
+	public static int entrada() {
+		int num;
+		
+		do {
+			System.out.println("Entre com um inteiro positivo");
+			num = sc.nextInt();
+		}while (num<=0);
+		return num;
+	}
+	
+	public static void divisores (int num) {
+		System.out.println("DIVISORES DE "+num);
+		for (int i=1; i<=num; i++) {
+			if (num%i == 0) {
+				System.out.print(i+"     ");
+			}
+		}
+	}
+
+}
