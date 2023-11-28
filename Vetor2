@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+/*
+ *  5 - Crie um programa em Java que instancie um vetor de inteiros, 
+ *  cujo tamanho será dado pelo usuario, preencha esse vetor e 
+ *  calcule a média dos seus componentes. No final, imprima o vetor 
+ *  na tela, bem como a media calculada.
+ */
+public class Un2Exemplo5 {
+	private static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		int tamanho;
+		double media;
+		int[] vet;
+		
+		System.out.println("Entre com o tamanho do vetor");
+		tamanho = sc.nextInt();
+		vet = new int[tamanho];
+		preencher (vet);
+		media =  media(vet);
+		imprimir(vet);
+		System.out.printf("A media dos elementos do vetor e: %.2f", media);
+	}
+
+	public static void preencher(int[] vet) {
+		for (int i=0; i<vet.length; i++) {
+			System.out.println("Entre com um inteiro");
+			vet[i] = sc.nextInt();
+		}
+	}
+
+	private static double media(int[] vet) {
+		double total=0;
+		for (int i=0; i<vet.length; i++) {
+			total += vet[i];
+		}
+		return total/vet.length;
+	}
+
+	public static void imprimir(int[] vet) {
+		System.out.println("VETOR");
+		for (int i=0; i<vet.length; i++) {
+			System.out.print(vet[i]+"  ");
+		}	
+		System.out.println();
+	}
+
+}
