@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+/*
+ *  Exemplo 4 - Faça um programa, em Java, que declare uma variável 
+ *  global, chamada quant que armazenará a quantidade de elementos 
+ *  que foram inseridos em um vetor e uma variavel local um vetor de 
+ *  inteiros. 
+ *  O programa deve utilizar métodos e deve pedir para o 
+ *  usuário colocar um elemento de cada vez no vetor. A cada 
+ *  elemento colocado deve imprimir na tela o vetor somente com os 
+ *  elementos já inseridos, quantidade de elementos inseridos e se 
+ *  o vetor já está cheio ou não. 
+ */
+public class Un2Exemplo4 {
+	private static int quant=0;
+	private static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		int tamanho;
+		int[] vet1;
+		
+		System.out.println("Entre com o tamanho do vetor");
+		tamanho = sc.nextInt();
+		vet1 = new int[tamanho];
+		inserir (vet1);
+	}
+
+	public static void inserir(int[] vet1) {
+		char opcao='N';
+		
+		do {
+			System.out.println("Entre com um inteiro");
+			vet1[quant] = sc.nextInt();
+			quant++;
+			imprimir (vet1);
+			System.out.println("\nFORAM INSERIDOS "+quant+" ELEMENTOS");
+			if (quant==vet1.length) {
+				System.out.println("VETOR CHEIO");
+			}else {
+				System.out.println("VETOR TEM POSICOES VAZIAS");
+				System.out.println("QUER CONTINUAR DIGITE S");
+				opcao = sc.next().toUpperCase().charAt(0);
+			}
+		}while(opcao=='S' && quant<vet1.length);
+		
+	}
+
+	public static void imprimir(int[] vet1) {
+		System.out.println("VETOR");
+		for (int i=0; i<quant; i++) {
+			System.out.print(vet1[i]+"  ");
+		}		
+	}
