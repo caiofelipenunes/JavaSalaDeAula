@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class Exercicio1 {
+
+	public static void main(String[] args) {
+		
+		lampada lamp = new lampada();
+		Scanner scan = new Scanner(System.in);
+		
+		int status;
+		status = 2;
+		
+		System.out.println("tecle 1 para ligar a lampada e 2 para desligar");
+		status = scan.nextInt();
+		
+		if (status == 1 ) {
+			lamp.setLigado(true);
+			
+		} else if (status == 2) {
+			lamp.setLigado(false);
+		} else {
+            System.out.println("Opção inválida. Por favor, escolha 1 para ligar ou 2 para desligar.");
+        }
+			
+	}
+
+}      
