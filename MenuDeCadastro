@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+/*
+Faça um programa cadastrar o nome e o CPF de várias pessoas. O
+nome deve ser armazenado em um vetor eo CPF em outro.
+Este programa deverá exibir o seguinte menu:
+1 - Cadastrar
+2 - Consultar por CPF
+3 - Sair
+Na opção 1 os dados deverão ser digitados e armazenados em seu
+respectivo vetor.
+Na opcao 2 o usuário digitará o CPF e será exibido seu nome e CPF.
+Na opção 3 o programa será finalizado.
+OBS. O número de pessoas será de no máximo 3. Cada uma das
+opções e o menu devem ser métodos.
+ */
+
+public class Un2Exemplo6 {
+	private static Scanner sc = new Scanner(System.in);
+	private static int quant=0;
+	
+	public static void main(String[] args) {
+		String[] nome = new String[4];
+		String[] cpf = new String[4];
+		int opcao;
+		
+		do {
+			System.out.println("1 - CADASTRAR");
+			System.out.println("2 - CONSULTAR CPF");
+			System.out.println("3 - SAIR");
+			System.out.println("DIGITE SUA OPCAO");
+			opcao = sc.nextInt();
+			switch (opcao) {
+			case 1:
+				if (quant<nome.length) {
+					cadastrar (nome, cpf);
+				}else {
+					System.out.println("VETOR CHEIO");
+				}
+				break;
+			case 2: 
+				consultarCpf (nome, cpf);
+				break;
+			case 3:
+				System.out.println("FIM");
+				break;
+			default:
+				System.err.println("OPCAO INVALIDA");
+			}
+			System.out.println();
+		}while (opcao!=3);
+	}
+
+	private static void cadastrar(String[] nome, String[] cpf) {
+		for (int i=0; i<nome.length; i++) {
+			System.out.println("Entre com o nome do aluno "+(i+1));
+			nome[i] = sc.next();
+			System.out.println("Entre com o cpf do aluno "+(i+1));
+			cpf[i] = sc.next();
+		}
+		quant=4;
+	}
+
+	private static void consultarCpf(String[] nome, String[] cpf) {
+		String aux;
+		int pos; 
+		
+		System.out.println("Entre com o cpf do aluno ");
+		aux = sc.next();
+		pos = pesquisa(cpf, aux);
+		if (pos==-1) {
+			System.err.println(aux+" NAO ENCONTRADO");
+		}else {
+			System.out.println(nome[pos] + "   "+ cpf[pos]);
+		}
+		
+		
+	}
+	
+	private static int pesquisa (String[] cpf, String aux) {
+		for (int i=0; i<cpf.length; i++) {
+			if (aux.equals(cpf[i])) {
+				return i;
+			}
+		}
+		return -1;
+	}
+}
